@@ -6,7 +6,7 @@
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:46:27 by kyacini           #+#    #+#             */
-/*   Updated: 2022/12/27 21:08:15 by kyacini          ###   ########.fr       */
+/*   Updated: 2022/12/28 19:53:33 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,7 @@ int 		*find_p(char **str);
 void		transform_around(char **str, int x, int y);
 char		**new_tab(char **str);
 int			check_way(char **str);
+void		free_double_char(char **str);
+char 		**error_treatment(int nb_params, char **params);
+
 #endif

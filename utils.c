@@ -6,7 +6,7 @@
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:18:10 by kyacini           #+#    #+#             */
-/*   Updated: 2022/12/27 19:55:31 by kyacini          ###   ########.fr       */
+/*   Updated: 2022/12/28 18:50:50 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,15 @@ int	only_one(char *str)
 		i++;
 	}
 	return (1);
+}
+
+void	free_double_char(char **str)
+{
+	int	i;
+	if (!str)
+		return ;
+	i = -1;
+	while (str[++i])
+		free(str[i]);
+	free(str);
 }

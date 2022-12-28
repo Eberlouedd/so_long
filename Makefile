@@ -6,7 +6,7 @@
 #    By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/27 16:10:01 by kyacini           #+#    #+#              #
-#    Updated: 2022/12/27 21:08:37 by kyacini          ###   ########.fr        #
+#    Updated: 2022/12/28 19:58:45 by kyacini          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ SRC = 	main.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
 		utils.c \
-		eval_map_way.c
+		eval_map_way.c \
+		errors.c
 
 
 NAME = so_long

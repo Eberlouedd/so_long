@@ -6,7 +6,7 @@
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 20:13:18 by kyacini           #+#    #+#             */
-/*   Updated: 2022/12/27 21:10:24 by kyacini          ###   ########.fr       */
+/*   Updated: 2022/12/28 19:56:49 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,22 @@ void	transform_around(char **str, int x, int y)
 
 	if (str[x][y + 1] != '1')
 	{
-		str[x][y + 1] += 2;
+		str[x][y + 1] = '1';
 		transform_around(str, x, y + 1);
 	}
 	if (str[x][y - 1] != '1')
 	{
-		str[x][y - 1] += 2;
+		str[x][y - 1] = '1';
 		transform_around(str, x, y - 1);
 	}
 	if (str[x + 1][y] != '1')
 	{
-		str[x + 1][y] += 2;
+		str[x + 1][y] = '1';
 		transform_around(str, x + 1, y);
 	}
-	if (str[x + 1][y] != '1')
+	if (str[x - 1][y] != '1')
 	{
-		str[x - 1][y] += 2;
+		str[x - 1][y] = '1';
 		transform_around(str, x - 1, y);
 	}
 	return ;
@@ -75,8 +75,10 @@ char	**new_tab(char **str)
 	i = tab[0];
 	j = tab[1];
 	transform_around(str, i, j);
+	free(tab);
 	return (str);
 }
+
 
 int	check_way(char **str)
 {
@@ -94,9 +96,10 @@ int	check_way(char **str)
 		while (new[i][j])
 		{
 			if(new[i][j] == 'E' || new[i][j] == 'C')
+			{
+				write(1, "Error\nThere is no way out !\n", 28);
 				return (0);
-			if (new[i][j] != '1')	
-				new[i][j] -= 2;
+			}
 			j++;
 		}
 		j = 0;

@@ -6,7 +6,7 @@
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:53:32 by kyacini           #+#    #+#             */
-/*   Updated: 2022/12/27 21:06:34 by kyacini          ###   ########.fr       */
+/*   Updated: 2022/12/28 19:59:56 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ int	have_walls(char **str)
 		i++;
 	}
 	if (!only_one(str[i - 1]))
+	{
+		write(1, "Error\nThe map need walls\n", 25);
 		return (0);
+	}
 	return (1);
 }
 
@@ -75,7 +78,10 @@ int	check_elements(char **str)
 		i++;
 	}
 	if (c < 1 || p != 1 || e != 1)
+	{
+		write(1, "Error\nYou need to have one exit, one character and at least one collectible\n", 76);
 		return (0);
+	}
 	return (1);
 }
 
@@ -87,7 +93,10 @@ int	form_rec(char **str)
 	while (str[i + 1])
 	{
 		if (ft_strlen(str[i]) != ft_strlen(str[i + 1]))
+		{
+			write(1, "Error\nYour map need to be a rectangle\n", 38);
 			return (0);
+		}
 		i++;
 	}
 	return (1);
