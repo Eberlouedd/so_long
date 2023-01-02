@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/so_long.h"
 
 int	only_one(char *str)
 {
@@ -35,4 +35,27 @@ void	free_double_char(char **str)
 	while (str[++i])
 		free(str[i]);
 	free(str);
+}
+
+int count_collectibles(char **str)
+{
+	int	i;
+	int	j;
+	int count;
+
+	count = 0;
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		while (str[i][j])
+		{
+			if(str[i][j] == 'C')
+				count++;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	return (count);
 }

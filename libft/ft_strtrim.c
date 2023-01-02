@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	debut(const char *chaine, const char *base)
+static int	debut(char *chaine, char *base)
 {
 	int	i;
 	int	j;
@@ -52,7 +52,7 @@ static void	ft_init(int *inter, int *i, int *j)
 	*j = 0;
 }
 
-static int	fin(const char *chaine, const char *base)
+static int	fin(char *chaine, char *base)
 {
 	int	inter;
 	int	i;
@@ -80,7 +80,7 @@ static int	fin(const char *chaine, const char *base)
 	return (mem);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char *s1, char *set)
 {
 	int		supp_compte;
 	char	*new_chaine;

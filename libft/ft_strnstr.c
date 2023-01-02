@@ -20,7 +20,7 @@ static void	ft_init(int *a, int *b, int *d)
 	*d = 0;
 }
 
-char	*ft_strnstr(const char *big, const char *little, int len)
+char	*ft_strnstr(char *big, char *little, int len)
 {
 	int	i;
 	int	j;

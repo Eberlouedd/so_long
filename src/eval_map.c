@@ -34,11 +34,17 @@ int	have_walls(char **str)
 
 	i = 0;
 	if (!only_one(str[0]))
+	{
+		write(1, "Error\nThe map need walls\n", 25);
 		return (0);
+	}
 	while (str[i])
 	{
 		if (str[i][0] != '1' || str[i][ft_strlen(str[i]) - 1] != '1')
+		{
+			write(1, "Error\nThe map need walls\n", 25);
 			return (0);
+		}
 		i++;
 	}
 	if (!only_one(str[i - 1]))
@@ -72,6 +78,11 @@ int	check_elements(char **str)
 				p++;
 			else if (str[i][j] == 'E')
 				e++;
+			else if(str[i][j] != '1' && str[i][j] != '0')
+			{
+				write(1, "Error\nWalls, spaces, character, collectibles and an exit door, nothing else.\n", 77);
+				return (0);
+			}
 			j++;
 		}
 		j = 0;

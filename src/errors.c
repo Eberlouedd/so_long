@@ -25,7 +25,7 @@ char **error_treatment(int nb_params, char **params)
 	map_test = get_map(params[1]);
 	if (map_test != NULL)
 	{
-		if(!(check_elements(map_test) && have_walls(map_test) && form_rec(map_test) && check_way(map_test)))
+		if(!(form_rec(map_test) && have_walls(map_test) && check_elements(map_test) && check_way(map_test)))
 		{
 			free_double_char(map_test);
 			return (NULL);
@@ -36,5 +36,35 @@ char **error_treatment(int nb_params, char **params)
 		write(1, "Error\nCan't read file\n", 22);
 		return (NULL);
 	}
+	free_double_char(map_test);
 	return (get_map(params[1]));
+}
+
+void end_of_game(t_img *game)
+{
+	printf("Moves : %d\n", game->nb_moves + 1);
+	free_double_char(game->map);
+	mlx_destroy_image(game->mlx ,game->charater);
+	mlx_destroy_image(game->mlx ,game->exit);
+	mlx_destroy_image(game->mlx ,game->wall);
+	mlx_destroy_image(game->mlx ,game->ground);
+	mlx_destroy_image(game->mlx ,game->collectibles);
+	mlx_destroy_window(game->mlx, game->mlx_win);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	exit(0);
+}
+
+void close_win(t_img *game)
+{
+	free_double_char(game->map);
+	mlx_destroy_image(game->mlx ,game->charater);
+	mlx_destroy_image(game->mlx ,game->exit);
+	mlx_destroy_image(game->mlx ,game->wall);
+	mlx_destroy_image(game->mlx ,game->ground);
+	mlx_destroy_image(game->mlx ,game->collectibles);
+	mlx_destroy_window(game->mlx, game->mlx_win);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	exit(0);
 }
