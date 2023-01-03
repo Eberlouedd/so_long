@@ -19,7 +19,8 @@ SRC =	src/main.c \
 		src/eval_map_way.c \
 		src/errors.c \
 		src/graphics.c \
-		src/hook.c
+		src/hook.c \
+		src/exit.c
 
 OBJS =	objs/main.o \
 		objs/parsing.o\
@@ -30,7 +31,8 @@ OBJS =	objs/main.o \
 		objs/errors.o\
 		objs/eval_map_way.o \
 		objs/graphics.o \
-		objs/hook.o
+		objs/hook.o \
+		objs/exit.o
 
 NAME = so_long
 

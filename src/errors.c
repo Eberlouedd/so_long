@@ -42,7 +42,9 @@ char **error_treatment(int nb_params, char **params)
 
 void end_of_game(t_img *game)
 {
-	printf("Moves : %d\n", game->nb_moves + 1);
+	write(1, "Moves : ", 9);
+    ft_putnbr_fd(game->nb_moves + 1, 1);
+    write(1, "\n", 1);
 	free_double_char(game->map);
 	mlx_destroy_image(game->mlx ,game->charater);
 	mlx_destroy_image(game->mlx ,game->exit);
@@ -67,4 +69,29 @@ void close_win(t_img *game)
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
 	exit(0);
+}
+
+void error_img_character(t_img *game)
+{
+	write(1, "Error\nCan't read character image\n", 33);
+	free_double_char(game->map);
+	mlx_destroy_image(game->mlx ,game->ground);
+	mlx_destroy_image(game->mlx ,game->collectibles);
+	mlx_destroy_image(game->mlx ,game->wall);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	exit(1);
+}
+
+void error_img_exit(t_img *game)
+{
+	write(1 ,"Error\nCan't read exit image\n", 28);
+	free_double_char(game->map);
+	mlx_destroy_image(game->mlx ,game->ground);
+	mlx_destroy_image(game->mlx ,game->collectibles);
+	mlx_destroy_image(game->mlx ,game->wall);
+	mlx_destroy_image(game->mlx ,game->charater);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	exit(1);
 }

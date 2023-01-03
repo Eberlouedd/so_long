@@ -41,25 +41,24 @@ int *find_p(char **str)
 
 void	transform_around(char **str, int x, int y)
 {
-
-	if (str[x][y + 1] != '1')
+	if (str[x][y + 1] != '1' && str[x][y + 1] != 'S' && str[x][y] != 'S')
 	{
-		str[x][y + 1] = '1';
+		str[x][y + 1] = transform_char(str[x][y + 1]);
 		transform_around(str, x, y + 1);
 	}
-	if (str[x][y - 1] != '1')
+	if (str[x][y - 1] != '1' && str[x][y - 1] != 'S' && str[x][y] != 'S')
 	{
-		str[x][y - 1] = '1';
+		str[x][y - 1] = transform_char(str[x][y - 1]);
 		transform_around(str, x, y - 1);
 	}
-	if (str[x + 1][y] != '1')
+	if (str[x + 1][y] != '1' && str[x + 1][y] != 'S' && str[x][y] != 'S')
 	{
-		str[x + 1][y] = '1';
+		str[x + 1][y] = transform_char(str[x + 1][y]);
 		transform_around(str, x + 1, y);
 	}
-	if (str[x - 1][y] != '1')
+	if (str[x - 1][y] != '1' && str[x - 1][y] != 'S' && str[x][y] != 'S')
 	{
-		str[x - 1][y] = '1';
+		str[x - 1][y] = transform_char(str[x - 1][y]);
 		transform_around(str, x - 1, y);
 	}
 	return ;

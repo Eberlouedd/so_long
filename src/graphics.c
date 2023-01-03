@@ -6,15 +6,27 @@ void init_variables(t_img *game, char **str)
     int width;
     int height;
 
-    game->mlx = mlx_init();
-	game->wall = mlx_xpm_file_to_image(game->mlx, "./wall.xpm", &width, &height);
-    game->collectibles = mlx_xpm_file_to_image(game->mlx, "./spectre.xpm", &width, &height);
-    game->ground = mlx_xpm_file_to_image(game->mlx, "./ground.xpm", &width, &height);
-    game->charater = mlx_xpm_file_to_image(game->mlx, "./character.xpm", &width, &height);
-    game->exit = mlx_xpm_file_to_image(game->mlx, "./exit.xpm", &width, &height);
     game->map = str;
+    game->mlx = mlx_init();
+    if(!game->mlx)
+        error_mlx(game);
+	game->wall = mlx_xpm_file_to_image(game->mlx, "./wall.xpm", &width, &height);
+    if (!game->wall)
+        error_img_wall(game);
+    game->collectibles = mlx_xpm_file_to_image(game->mlx, "./spectre.xpm", &width, &height);
+    if (!game->collectibles)
+        error_img_collectible(game);
+    game->ground = mlx_xpm_file_to_image(game->mlx, "./ground.xpm", &width, &height);
+    if (!game->ground)
+        error_img_ground(game);
+    game->charater = mlx_xpm_file_to_image(game->mlx, "./character.xpm", &width, &height);
+    if (!game->charater)
+        error_img_character(game);
+    game->exit = mlx_xpm_file_to_image(game->mlx, "./exit.xpm", &width, &height);
+    if (!game->exit)
+        error_img_exit(game);
     game->nb_collectible = count_collectibles(str);
-    game->nb_moves = 0;
+    game->nb_moves = 0;   
 }
 
 void    put_img(t_img image, char c, int j, int i)
@@ -42,6 +54,8 @@ void make_window(char **str, t_img *game)
     while (str[i])
         i++;
     game->mlx_win = mlx_new_window(game->mlx, ft_strlen(str[0]) * 50, i * 50, "so_long");
+    if(!game->mlx_win)
+        error_mlx_win(game);
 	if (!game->wall)
 		return ;
     i = 0;

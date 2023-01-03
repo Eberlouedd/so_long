@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 		exit (1);
 	make_window(map, &game);
 	mlx_key_hook(game.mlx_win, key_event, &game);
+	mlx_hook(game.mlx_win, 33, 0, close_win, &game);
 	mlx_loop(game.mlx);
 	return (0);
 }

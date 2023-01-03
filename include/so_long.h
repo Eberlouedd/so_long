@@ -62,5 +62,13 @@ int 		*make_new_xy(int i, int j, int key);
 void  		move_images(t_img *game, int i, int j, int key);
 void 		close_win(t_img *game);
 void 		end_of_game(t_img *game);
+void 		error_img_character(t_img *game);
+void 		error_img_exit(t_img *game);
+void 		error_img_collectible(t_img *game);
+void 		error_img_wall(t_img *game);
+void 		error_img_ground(t_img *game);
+void 		error_mlx(t_img *game);
+void 		error_mlx_win(t_img *game);
+char 		transform_char(char c);
 
 #endif

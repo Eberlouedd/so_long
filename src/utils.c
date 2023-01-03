@@ -59,3 +59,10 @@ int count_collectibles(char **str)
 	}
 	return (count);
 }
+
+char transform_char(char c)
+{
+	if(c == 'E')
+		return ('S');
+	return ('1');
+}

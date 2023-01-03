@@ -45,7 +45,9 @@ void  move_images(t_img *game, int i, int j, int key)
     game->map[i][j] = '0';
     game->map[place_x][place_y] = 'P';
     game->nb_moves++;
-    printf("Mooves : %d\n", game->nb_moves);
+    write(1, "Moves : ", 9);
+    ft_putnbr_fd(game->nb_moves, 1);
+    write(1, "\n", 1);
   }
 }
 
