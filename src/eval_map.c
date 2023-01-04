@@ -6,7 +6,7 @@
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:53:32 by kyacini           #+#    #+#             */
-/*   Updated: 2022/12/28 19:59:56 by kyacini          ###   ########.fr       */
+/*   Updated: 2023/01/04 20:15:09 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,28 +59,18 @@ int	check_elements(char **str)
 {
 	int	i;
 	int	j;
-	int	p;
-	int	e;
-	int	c;
 
 	i = 0;
-	e = 0;
 	j = 0;
-	c = 0;
-	p = 0;
 	while (str[i])
 	{
 		while (str[i][j])
 		{
-			if (str[i][j] == 'C')
-				c = 1;
-			else if (str[i][j] == 'P')
-				p++;
-			else if (str[i][j] == 'E')
-				e++;
-			else if(str[i][j] != '1' && str[i][j] != '0')
+			if (str[i][j] != '1' && str[i][j] != '0' && str[i][j] != 'E'
+				&& str[i][j] != 'P' && str[i][j] != 'C' && str[i][j] != '1')
 			{
-				write(1, "Error\nWalls, spaces, character, collectibles and an exit door, nothing else.\n", 77);
+				write(1, "Error\nWalls, spaces, character", 31);
+				write(1, ", collectibles and an exit door, nothing else.\n", 47);
 				return (0);
 			}
 			j++;
@@ -88,11 +78,8 @@ int	check_elements(char **str)
 		j = 0;
 		i++;
 	}
-	if (c < 1 || p != 1 || e != 1)
-	{
-		write(1, "Error\nYou need to have one exit, one character and at least one collectible\n", 76);
+	if (!check_c(str) || !check_p(str) || !check_e(str))
 		return (0);
-	}
 	return (1);
 }
 

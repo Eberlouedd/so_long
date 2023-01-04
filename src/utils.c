@@ -6,7 +6,7 @@
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:18:10 by kyacini           #+#    #+#             */
-/*   Updated: 2022/12/28 18:50:50 by kyacini          ###   ########.fr       */
+/*   Updated: 2023/01/04 18:41:11 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	only_one(char *str)
 void	free_double_char(char **str)
 {
 	int	i;
+
 	if (!str)
 		return ;
 	i = -1;
@@ -37,11 +38,11 @@ void	free_double_char(char **str)
 	free(str);
 }
 
-int count_collectibles(char **str)
+int	count_collectibles(char **str)
 {
 	int	i;
 	int	j;
-	int count;
+	int	count;
 
 	count = 0;
 	i = 0;
@@ -50,7 +51,7 @@ int count_collectibles(char **str)
 	{
 		while (str[i][j])
 		{
-			if(str[i][j] == 'C')
+			if (str[i][j] == 'C')
 				count++;
 			j++;
 		}
@@ -60,9 +61,16 @@ int count_collectibles(char **str)
 	return (count);
 }
 
-char transform_char(char c)
+char	transform_char(char c)
 {
-	if(c == 'E')
+	if (c == 'E')
 		return ('S');
 	return ('1');
+}
+
+void	print_moves(int moves)
+{
+	write(1, "Moves : ", 9);
+	ft_putnbr_fd(moves, 1);
+	write(1, "\n", 1);
 }

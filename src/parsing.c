@@ -6,7 +6,7 @@
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 18:48:08 by kyacini           #+#    #+#             */
-/*   Updated: 2022/12/27 19:50:29 by kyacini          ###   ########.fr       */
+/*   Updated: 2023/01/04 20:08:30 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,88 @@ char	**get_map(char *str)
 		return (result);
 	}
 	return (NULL);
+}
+
+int	check_c(char **str)
+{
+	int	i;
+	int	j;
+	int	c;
+
+	j = 0;
+	c = 0;
+	i = 0;
+	while (str[i])
+	{
+		while (str[i][j])
+		{
+			if (str[i][j] == 'C')
+				c = 1;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	if (c != 1)
+	{
+		write(1, "Error\nThere is a problem with the collectibles\n", 48);
+		return (0);
+	}
+	return (1);
+}
+
+int	check_p(char **str)
+{
+	int	i;
+	int	j;
+	int	p;
+
+	j = 0;
+	p = 0;
+	i = 0;
+	while (str[i])
+	{
+		while (str[i][j])
+		{
+			if (str[i][j] == 'P')
+				p++;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	if (p != 1)
+	{
+		write(1, "Error\nOne character please\n", 27);
+		return (0);
+	}
+	return (1);
+}
+
+int	check_e(char **str)
+{
+	int	i;
+	int	j;
+	int	e;
+
+	j = 0;
+	e = 0;
+	i = 0;
+	while (str[i])
+	{
+		while (str[i][j])
+		{
+			if (str[i][j] == 'E')
+				e++;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	if (e != 1)
+	{
+		write(1, "Error\nOne escape please\n", 24);
+		return (0);
+	}
+	return (1);
 }

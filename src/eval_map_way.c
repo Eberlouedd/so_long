@@ -6,18 +6,18 @@
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 20:13:18 by kyacini           #+#    #+#             */
-/*   Updated: 2022/12/28 19:56:49 by kyacini          ###   ########.fr       */
+/*   Updated: 2023/01/04 18:25:50 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int *find_p(char **str)
+int	*find_p(char **str)
 {
 	int	i;
 	int	j;
-	int *tab;
-	
+	int	*tab;
+
 	i = 0;
 	j = 0;
 	tab = malloc(2 * sizeof(int));
@@ -25,7 +25,7 @@ int *find_p(char **str)
 	{
 		while (str[i][j])
 		{
-			if(str[i][j] == 'P')
+			if (str[i][j] == 'P')
 			{
 				tab[0] = i;
 				tab[1] = j;
@@ -66,9 +66,9 @@ void	transform_around(char **str, int x, int y)
 
 char	**new_tab(char **str)
 {
-	int i;
+	int	i;
 	int	j;
-	int *tab;
+	int	*tab;
 
 	tab = find_p(str);
 	i = tab[0];
@@ -78,12 +78,11 @@ char	**new_tab(char **str)
 	return (str);
 }
 
-
 int	check_way(char **str)
 {
-	char **new;
-	int	i;
-	int j;
+	char	**new;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -94,7 +93,7 @@ int	check_way(char **str)
 	{
 		while (new[i][j])
 		{
-			if(new[i][j] == 'E' || new[i][j] == 'C')
+			if (new[i][j] == 'E' || new[i][j] == 'C')
 			{
 				write(1, "Error\nThere is no way out !\n", 28);
 				return (0);

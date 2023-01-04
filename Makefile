@@ -6,7 +6,7 @@
 #    By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/27 16:10:01 by kyacini           #+#    #+#              #
-#    Updated: 2022/12/28 19:58:45 by kyacini          ###   ########.fr        #
+#    Updated: 2023/01/04 18:33:16 by kyacini          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,15 +52,15 @@ all : ${NAME}
 
 objs/%.o : src/%.c
 	mkdir -p ./objs
-	$(CC)  -I${INC} -c $< -o $@
+	$(CC)  -I${INC} -c $< -o $@ ${CFLAGS}
 
 %.o : %.c
-	$(CC)  -I${INC} -c $< -o $@
+	$(CC)  -I${INC} -c $< -o $@ ${CFLAGS} 
 
 ${NAME} : ${OBJS} $(LIB)
 	make -C ./libft
 	make -C ./mlx_linux
-	$(CC) ${OBJS} -D LINUX ${MLXFLAGS} ${LIBFLAGS} -o ${NAME}
+	$(CC) ${OBJS} -D LINUX ${MLXFLAGS} ${LIBFLAGS} -o ${NAME} ${CFLAGS}
 
 clean:
 		$(RM) ${OBJS} $(OBJ_B)
