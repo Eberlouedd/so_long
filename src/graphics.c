@@ -6,7 +6,7 @@
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 18:12:14 by kyacini           #+#    #+#             */
-/*   Updated: 2023/01/04 20:12:05 by kyacini          ###   ########.fr       */
+/*   Updated: 2023/01/16 18:29:39 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ void	init_variables(t_img *g, char **str)
 	g->mlx = mlx_init();
 	if (!g->mlx)
 		error_mlx(g);
-	g->wall = mlx_xpm_file_to_image(g->mlx, "./wall.xpm", &w, &h);
+	g->wall = mlx_xpm_file_to_image(g->mlx, "./img/wall.xpm", &w, &h);
 	if (!g->wall)
 		error_img_wall(g);
-	g->collectibles = mlx_xpm_file_to_image(g->mlx, "./spectre.xpm", &w, &h);
+	g->collectibles = mlx_xpm_file_to_image(g->mlx, "./img/item.xpm", &w, &h);
 	if (!g->collectibles)
 		error_img_collectible(g);
-	g->ground = mlx_xpm_file_to_image(g->mlx, "./ground.xpm", &w, &h);
+	g->ground = mlx_xpm_file_to_image(g->mlx, "./img/ground.xpm", &w, &h);
 	if (!g->ground)
 		error_img_ground(g);
-	g->charater = mlx_xpm_file_to_image(g->mlx, "./character.xpm", &w, &h);
+	g->charater = mlx_xpm_file_to_image(g->mlx, "./img/perso.xpm", &w, &h);
 	if (!g->charater)
 		error_img_character(g);
-	g->exit = mlx_xpm_file_to_image(g->mlx, "./exit.xpm", &w, &h);
+	g->exit = mlx_xpm_file_to_image(g->mlx, "./img/exit.xpm", &w, &h);
 	if (!g->exit)
 		error_img_exit(g);
 	g->nb_collectible = count_collectibles(str);

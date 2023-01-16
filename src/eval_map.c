@@ -6,7 +6,7 @@
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:53:32 by kyacini           #+#    #+#             */
-/*   Updated: 2023/01/04 20:15:09 by kyacini          ###   ########.fr       */
+/*   Updated: 2023/01/16 18:39:03 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,25 @@ int	form_rec(char **str)
 	return (1);
 }
 
-int	check_map(char **str)
+int	check_nl(char *str)
 {
-	if (!str)
+	char	buff[2];
+	char	mem;
+	int		fd;
+
+	fd = open(str, O_RDONLY);
+	buff[1] = '\0';
+	read(fd, buff, 1);
+	if (buff[0] == '\n')
 		return (0);
-	if (form_rec(str) && check_elements(str) && have_walls(str))
-		return (1);
-	return (0);
+	while (read(fd, buff, 1))
+	{
+		if (buff[0] == '\n' && mem == '\n')
+			return (0);
+		mem = buff[0];
+	}
+	if (buff[0] == '\n')
+		return (0);
+	close(fd);
+	return (1);
 }

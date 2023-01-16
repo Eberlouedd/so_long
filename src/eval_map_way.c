@@ -6,37 +6,38 @@
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 20:13:18 by kyacini           #+#    #+#             */
-/*   Updated: 2023/01/04 18:25:50 by kyacini          ###   ########.fr       */
+/*   Updated: 2023/01/16 18:41:30 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	*find_p(char **str)
+t_loc	find_p(char **str)
 {
-	int	i;
-	int	j;
-	int	*tab;
+	int		i;
+	int		j;
+	t_loc	localisation;
 
 	i = 0;
 	j = 0;
-	tab = malloc(2 * sizeof(int));
+	localisation.x = 1;
+	localisation.y = 1;
 	while (str[i])
 	{
 		while (str[i][j])
 		{
 			if (str[i][j] == 'P')
 			{
-				tab[0] = i;
-				tab[1] = j;
-				return (tab);
+				localisation.x = i;
+				localisation.y = j;
+				return (localisation);
 			}
 			j++;
 		}
 		j = 0;
 		i++;
 	}
-	return (0);
+	return (localisation);
 }
 
 void	transform_around(char **str, int x, int y)
@@ -66,15 +67,14 @@ void	transform_around(char **str, int x, int y)
 
 char	**new_tab(char **str)
 {
-	int	i;
-	int	j;
-	int	*tab;
+	int		i;
+	int		j;
+	t_loc	localisation;
 
-	tab = find_p(str);
-	i = tab[0];
-	j = tab[1];
+	localisation = find_p(str);
+	i = localisation.x;
+	j = localisation.y;
 	transform_around(str, i, j);
-	free(tab);
 	return (str);
 }
 
@@ -86,8 +86,6 @@ int	check_way(char **str)
 
 	i = 0;
 	j = 0;
-	if (!check_map(str))
-		return (0);
 	new = new_tab(str);
 	while (new[i])
 	{

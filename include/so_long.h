@@ -6,7 +6,7 @@
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:46:27 by kyacini           #+#    #+#             */
-/*   Updated: 2023/01/04 20:28:52 by kyacini          ###   ########.fr       */
+/*   Updated: 2023/01/16 18:41:00 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,19 @@ typedef struct s_img
 	int		nb_moves;
 }	t_img;
 
+typedef struct s_loc
+{
+	int	x;
+	int	y;
+}	t_loc;
+
 void		check_extension(char *str);
 char		**get_map(char *str);
 int			only_one(char *str);
 int			have_walls(char **str);
 int			check_elements(char **str);
 int			form_rec(char **str);
-int			check_map(char **str);
-int			*find_p(char **str);
+t_loc		find_p(char **str);
 void		transform_around(char **str, int x, int y);
 char		**new_tab(char **str);
 int			check_way(char **str);
@@ -73,5 +78,5 @@ void		print_moves(int moves);
 int			check_e(char **str);
 int			check_p(char **str);
 int			check_c(char **str);
-
+int			check_nl(char *str);
 #endif
