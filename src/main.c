@@ -6,7 +6,7 @@
 /*   By: kyacini <kyacini@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 15:44:50 by kyacini           #+#    #+#             */
-/*   Updated: 2023/01/16 18:40:45 by kyacini          ###   ########.fr       */
+/*   Updated: 2023/01/17 14:25:27 by kyacini          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 		exit (1);
 	if (!check_nl(argv[1]))
 	{
+		free_double_char(map);
 		write(1, "Error\nProbleme with a new line\n", 31);
 		exit(1);
 	}
